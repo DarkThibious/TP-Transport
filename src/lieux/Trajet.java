@@ -45,9 +45,9 @@ public class Trajet {
     //TODO
     public boolean estCoherent() 
     {
-    	int i =0;
+    	int i=0;
     	boolean b = true;
-    	while(b = true && i<this.sesEtapes.size()-1)
+    	while(b = true && i<this.sesEtapes.size())
     	{
     		try
     		{
