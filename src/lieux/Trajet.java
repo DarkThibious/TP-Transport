@@ -47,7 +47,7 @@ public class Trajet {
     {
     	int i=0;
     	boolean b = true;
-    	while(b = true && i<this.sesEtapes.size())
+    	while(b && i<this.sesEtapes.size()-1)
     	{
     		try
     		{
@@ -57,11 +57,12 @@ public class Trajet {
     			 * ET l'arrivéé de l'etape i = depart de l'etape i+1
     			 * */
     			 
-				if ( (this.sesEtapes.get(i).estPossible() == true) && 
+				if ( this.sesEtapes.get(i).estPossible() && 
 					 (this.sesEtapes.get(i).hArrivee().compareTo(this.sesEtapes.get(i+1).hDepart()) <= 0) &&
 					 (this.sesEtapes.get(i).arrivee().equals(this.sesEtapes.get(i+1).depart()))
 					)
 				{
+
 					i=i+1;
 				}
 				else
@@ -74,8 +75,8 @@ public class Trajet {
 				e.printStackTrace();
 			}
     	}
-    	return b;
-    }
+    	return (b && this.sesEtapes.get(this.sesEtapes.size()-1).estPossible());
+    	}
 
     //TODO
     public Heure hArrivee() throws ErreurTrajet 

@@ -10,7 +10,13 @@ public class Etape
      * elle n'utilise pas un moyen de transport possible entre ces
      * lieux a cette heure.
      */
-    public Etape(Lieu d, Lieu a, MoyenTransport m, Heure h) {}
+    public Etape(Lieu d, Lieu a, MoyenTransport m, Heure h) 
+    {
+    	this.dep = d;
+    	this.arr = a;
+    	this.moyen = m;
+    	this.hdep = h;
+    }
 
     public void liste() 
     {

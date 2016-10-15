@@ -56,6 +56,7 @@ public abstract class Lieu
 
     public boolean estVoisin(Lieu l) 
     {
+    	System.out.println(this.equals(l) || lesDistances.get(l) != null);
     	return this.equals(l) || lesDistances.get(l) != null;
     }
 }

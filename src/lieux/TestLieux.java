@@ -202,9 +202,10 @@ public class TestLieux
 	return new Trajet("t4c", OrsayVille, ASupelec, dep, res);
     }
 
-    public static void main(String[] args) throws ErreurTrajet, ErreurHeure  {
-	    creerLieux();
-	    setDistances();
+    public static void main(String[] args) {//throws ErreurTrajet, ErreurHeure  {
+    	try {
+    	creerLieux();
+		setDistances();
 	    addRaccourci();
 	    setHoraires();
 	    Trajet t0a = mkTrajet0a(); testeTrajet(t0a);
@@ -219,5 +220,9 @@ public class TestLieux
 	    testeTrajet(t1b);
 	    testeTrajet(t2);
 	    testeTrajet(t3);
+    	} catch (ErreurTrajet | ErreurHeure e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 }
