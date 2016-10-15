@@ -45,24 +45,80 @@ public class Trajet {
     //TODO
     public boolean estCoherent() 
     {
-    	return false;
+    	int i =0;
+    	boolean b = true;
+    	while(b = true && i<this.sesEtapes.size()-1)
+    	{
+    		try
+    		{
+    			/* le trajet est coherent
+    			 * si toutes les etapes sont possibles
+    			 * ET l'heure d'arrivée de l'etape i < heure de depart de l'etape i+1 
+    			 * ET l'arrivéé de l'etape i = depart de l'etape i+1
+    			 * */
+    			 
+				if ( (this.sesEtapes.get(i).estPossible() == true) && 
+					 (this.sesEtapes.get(i).hArrivee().compareTo(this.sesEtapes.get(i+1).hDepart()) <= 0) &&
+					 (this.sesEtapes.get(i).arrivee().equals(this.sesEtapes.get(i+1).depart()))
+					)
+				{
+					i=i+1;
+				}
+				else
+				{
+					b = false;
+				}
+			} 
+    		catch (ErreurTrajet e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}
+    	return b;
     }
 
     //TODO
     public Heure hArrivee() throws ErreurTrajet 
     {
-    	return null;
+    	Heure arrivee = new Heure();
+    	// L'heure d'arrivée du trajet est l'heure d'arrivéé de la dernière étape
+    	arrivee = this.sesEtapes.get(this.sesEtapes.size()-1).hArrivee();
+    	return arrivee;
     }
 
     //TODO
     public Heure duree() throws ErreurTrajet 
     {
-    	return null;
+    	Heure dureeTrajet = new Heure();
+
+    	// La duree du trajet est l'heure d'arrivée - heure de depart
+    	try 
+    	{
+			dureeTrajet = dateDepart.delaiAvant(this.hArrivee());
+		} 
+    	catch (ErreurHeure e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	return dureeTrajet;
     }
 
     //TODO
     public Heure attente() throws ErreurTrajet 
     {
+    	int i = 0;
+    	Heure tempsAttente = new Heure();
+    	for(i=0;i<this.sesEtapes.size();i++)
+    	{
+    		try 
+    		{
+				tempsAttente = tempsAttente.add(this.sesEtapes.get(i).attente());
+			} 
+    		catch (ErreurHeure e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}
     	return null;
     }
     

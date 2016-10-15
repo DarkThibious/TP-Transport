@@ -42,24 +42,24 @@ public class Etape
     //TODO
     public Heure hArrivee() throws ErreurTrajet 
     {
-    	return null;
+    	return moyen.hArrivee(dep, arr, hdep);
     }
 
     //TODO
     public boolean estPossible() 
     {
-    	return false;
+    	return moyen.estPossible(dep, arr, hdep);
     }
 
     //TODO
     public Heure duree() throws ErreurTrajet 
     {
-    	return null;
+    	return moyen.duree(dep, arr, hdep);
     }
 
     //TODO
     public Heure attente()  throws ErreurTrajet 
     {
-    	return null;
+    	return moyen.attente(dep, arr, hdep);
     }
 }

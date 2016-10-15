@@ -14,13 +14,13 @@ public class APieds extends MoyenTransport
     //TODO
     public boolean estPossible(Lieu l1, Lieu l2, Heure dep) 
     {
-    	return false;
+    	return l1.estVoisin(l2);
     }
 
     //TODO
     public Heure attente(Lieu l1, Lieu l2, Heure dep) throws ErreurTrajet 
     {
-    	return null;
+    	return new Heure();
     }
 
     // duree du voyage de l1 a l2, hors temps d'attente, a l'heure dep selon
@@ -28,6 +28,6 @@ public class APieds extends MoyenTransport
     //TODO
     public Heure duree(Lieu l1, Lieu l2, Heure dep) throws ErreurTrajet 
     {
-    	return null;
+    	return l1.distance(l2);
     }
 }
