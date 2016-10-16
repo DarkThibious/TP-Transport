@@ -8,7 +8,7 @@ public class CompAttente implements Comparateur
 	 */ 
     public int compare(Trajet t1, Trajet t2) 
     {
-    	//throw new UnsupportedOperationException(); // à changer !
+    	throw new UnsupportedOperationException(); // à changer !
 /*
     	int retour;
 		try 
@@ -21,6 +21,6 @@ public class CompAttente implements Comparateur
 			e.printStackTrace();
 		}
 */
-			return t1.attente().compareTo(t2.attente());
+			//return t1.attente().compareTo(t2.attente());
     }
 }

@@ -55,4 +55,19 @@ public class EnBus extends MoyenTransport
     	Arret a2 = (Arret)l2;
 		return this.saLigne.estPossible(a1, a2, dep);
     }
+    
+    public boolean equals(Object arg) 
+    {
+		if (arg == null) { return false; }
+		if (arg == this) { return true; }
+		if (arg instanceof EnBus) 
+		{
+			EnBus eb = (EnBus) arg;
+		    return eb.saLigne == this.saLigne;
+		} 
+		else 
+		{ 
+			return false; 
+		}
+    }
 }

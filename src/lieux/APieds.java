@@ -30,4 +30,19 @@ public class APieds extends MoyenTransport
     {
     	return l1.distance(l2);
     }
+    
+    public boolean equals(Object arg)
+    {
+    	if (arg == null) { return false; }
+		if (arg == this) { return true; }
+		if (arg instanceof APieds) 
+		{
+		    return true;
+		} 
+		else 
+		{ 
+			return false; 
+		}
+    	
+    }
 }

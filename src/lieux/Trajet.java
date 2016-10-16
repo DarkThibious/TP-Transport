@@ -125,6 +125,15 @@ public class Trajet {
     //TODO
     public int nbChgt() throws ErreurTrajet 
     {
+    	if(this.sesEtapes.size() != 0 && this.sesEtapes != null)
+    	{
+    		
+    	}
+    	else
+    	{
+    		throw new ErreurTrajet("Arrêt non desservi par cette ligne de bus.");
+    	}
+    	int i = 0;
     	return 0;
     }
 
