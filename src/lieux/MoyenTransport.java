@@ -19,10 +19,11 @@ public abstract class MoyenTransport
     	try 
     	{
     		Heure res = dep;
+    		
     		// attente le cas echeant avant de pouvoir partir avec ce moyen
-    		res.add(this.attente(l1, l2, dep));
+    		res = res.add(this.attente(l1, l2, dep));
     		// plus duree du trajet avec ce moyen.
-    		res.add(this.duree(l1, l2, dep));
+    		res = res.add(this.duree(l1, l2, dep));
     		return res;
     	} catch (ErreurHeure e) 
     	{

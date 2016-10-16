@@ -48,7 +48,7 @@ public abstract class Lieu
     			throw new ErreurTrajet("distance indefinie");
     		} 
     		else 
-    		{ 
+    		{
     			return i; 
     		}
     	}

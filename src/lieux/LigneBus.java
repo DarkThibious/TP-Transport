@@ -97,7 +97,7 @@ public class LigneBus
 			}
 			int i;
 			Heure h = new Heure();
-			for(i = indDep; i<indArr-1;i++)
+			for(i = indDep; i<indArr;i++)
 			{
 				try 
 				{

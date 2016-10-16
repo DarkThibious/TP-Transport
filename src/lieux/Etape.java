@@ -21,9 +21,20 @@ public class Etape
 
     public void liste() 
     {
+    	Heure att;
+    	Heure arri;
+    	try
+    	{
+    		att = attente();
+    		arri = hArrivee();
+    	}
+    	catch (Exception e)
+    	{
+    		return;
+    	}
     	/* manque encore l'horaire de depart + le delai d'attente */
     	System.out.println("De " + dep.nom() + " a " + arr.nom() + ": "
-    				+ moyen.toString() + " [depart: " + hdep + "]");
+    				+ moyen.toString() + " [depart: " + hdep + "]" + " [attente: " + att + "]" + " [arrivée: " + arri + "]");
     }
 
     public MoyenTransport moyen() 
