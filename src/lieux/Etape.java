@@ -10,6 +10,7 @@ public class Etape
      * elle n'utilise pas un moyen de transport possible entre ces
      * lieux a cette heure.
      */
+    //TODO
     public Etape(Lieu d, Lieu a, MoyenTransport m, Heure h) 
     {
     	this.dep = d;
@@ -26,23 +27,23 @@ public class Etape
     }
 
     public MoyenTransport moyen() 
-    { 
+    {
     	return moyen; 
     }
 
     public Lieu depart() 
-    { 
+    {
     	return dep; 
     }
 
     public Lieu arrivee() 
-    { 
+    {
     	return arr; 
     }
 
     public Heure hDepart() 
-    { 
-    	return hdep; 
+    {
+    	return hdep;
     }
 
     //TODO

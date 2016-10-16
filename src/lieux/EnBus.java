@@ -18,26 +18,22 @@ public class EnBus extends MoyenTransport
     /* Renvoie le temps d'attente du bus qui va de "l1" à "l2" à l'heure dep*/
     public Heure attente(Lieu l1, Lieu l2, Heure dep) throws ErreurTrajet
     {
-    	if (this.estPossible(l1, l2, dep) == false) // lance une erreur si le tajet n'est possible en bus entre "l1" et "l2"  à l'heure "dep"
+    	if (!this.estPossible(l1, l2, dep)) // lance une erreur si le trajet n'est possible en bus entre "l1" et "l2"  à l'heure "dep"
     	{
     		throw new ErreurTrajet("Arrêt non desservi par cette ligne de bus.");
     	}
     	else //sinon renvoie le temps d'attente
     	{
         	Arret a1 = (Arret)l1;
-        	Arret a2 = (Arret)l2;
-        	Heure attenteBus = new Heure();
-    		attenteBus = this.saLigne.attente(a1, dep);
-    		return attenteBus;
+        	return this.saLigne.attente(a1, dep);
     	}
-
     }
 
     //TODO
     /* Renvoie la duree en bus entre "l1" et "l2"*/
     public Heure duree(Lieu l1, Lieu l2, Heure dep) throws ErreurTrajet 
     {
-    	if(this.estPossible(l1, l2, dep) == false) // lance une erreur si le tajet n'est possible en bus entre "l1" et "l2"  à l'heure "dep"
+    	if(!this.estPossible(l1, l2, dep)) // lance une erreur si le tajet n'est possible en bus entre "l1" et "l2"  à l'heure "dep"
     	{
     		throw new ErreurTrajet("non desservi");
     	}
@@ -57,17 +53,6 @@ public class EnBus extends MoyenTransport
     {
     	Arret a1 = (Arret)l1;
     	Arret a2 = (Arret)l2;
-    	try 
-    	{
-				if(this.saLigne.estPossible(a1, a2, dep) == true)
-				{
-					return true;
-				}
-		} 
-    	catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    	return false;
+		return this.saLigne.estPossible(a1, a2, dep);
     }
 }

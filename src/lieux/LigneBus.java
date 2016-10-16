@@ -39,16 +39,15 @@ public class LigneBus
 	 * l'autre sens, il faut creer une deuxieme ligne !
 	 * On suppose enfin que les lignes ne sont pas circulaires,
 	 */
-	public void ajoutHoraires(Heure[] horaire, Heure[] hdepart)
-			throws ErreurTrajet 
-			{
+	public void ajoutHoraires(Heure[] horaire, Heure[] hdepart) throws ErreurTrajet 
+	{
 		if (horaire.length != sesArrets.size() - 1) 
 		{
 			throw new ErreurTrajet("Horaire mal formatte");
 		}
 		sesDeparts = hdepart;
 		sesTemps = horaire;
-			}
+	}
 
 	//TODO
 	public boolean estPossible(Arret a1, Arret a2, Heure dep)
@@ -124,31 +123,29 @@ public class LigneBus
 		}
 		else
 		{
-			Heure tempsAttente = new Heure();
-			tempsAttente = dureeEnBus(this.sesArrets.get(0),a); // duree que le bus met entre le 1er arret et l'arret a 
-			Heure arrivee = new Heure();
+			Heure tempsAttente = dureeEnBus(this.sesArrets.get(0), a); // duree que le bus met entre le 1er arret et l'arret a 
+			Heure arrivee = this.sesDeparts[0];
 			boolean b = true;
-			int i =0;
-			while(b = true)
+			int i = 0;
+			while(b)
 			{
+				arrivee = this.sesDeparts[i];
 				try
 				{
-					arrivee = this.sesDeparts[i];
 					arrivee = arrivee.add(tempsAttente); // calcul de l'heure à laquelle le bus arrive
-					if (arrivee.compareTo(h) == -1)
-					{
-						i=i+1;
-					}
-					else
-					{
-						b = false;
-					}
-
-				} catch (ErreurHeure e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					
+				} catch (ErreurHeure e) 
+				{
+					throw new ErreurTrajet("Problème avec les horaires");
 				}
-
+				if (arrivee.compareTo(h) == -1)
+				{
+					i = i+1;
+				}
+				else
+				{
+					b = false;
+				}
 			}
 			if(i == this.sesDeparts.length) // dernier bus dejà passé
 			{
@@ -156,17 +153,16 @@ public class LigneBus
 			}
 			else // sinon on retourne le temps qu'il doit attendre avant le prochain bus
 			{
-				Heure attente = new Heure();
+				Heure attente;
 				try 
 				{
-
 					attente = h.delaiAvant(arrivee); // calcul temps d'attente
-				} catch (ErreurHeure e) {
-					e.printStackTrace();
+				} catch (ErreurHeure e) 
+				{
+					throw new ErreurTrajet("Problème avec les horaires");
 				}
 				return attente;
 			}
-
 		}
 	}
 }

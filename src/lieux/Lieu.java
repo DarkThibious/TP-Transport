@@ -12,7 +12,7 @@ public abstract class Lieu
 		lesDistances = new HashMap<Lieu, Heure>();
     }
 
-    public String nom() 
+    public String nom()
     {
     	return nom;
     }
@@ -56,7 +56,6 @@ public abstract class Lieu
 
     public boolean estVoisin(Lieu l) 
     {
-    	System.out.println(this.equals(l) || lesDistances.get(l) != null);
     	return this.equals(l) || lesDistances.get(l) != null;
     }
 }

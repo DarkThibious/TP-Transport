@@ -45,9 +45,12 @@ public class Trajet {
     //TODO
     public boolean estCoherent() 
     {
+    	if(sesEtapes.size()==0)
+    	{
+    		return false;
+    	}
     	int i=0;
-    	boolean b = true;
-    	while(b && i<this.sesEtapes.size()-1)
+    	while(i<this.sesEtapes.size()-1)
     	{
     		try
     		{
@@ -59,32 +62,28 @@ public class Trajet {
     			 
 				if ( this.sesEtapes.get(i).estPossible() && 
 					 (this.sesEtapes.get(i).hArrivee().compareTo(this.sesEtapes.get(i+1).hDepart()) <= 0) &&
-					 (this.sesEtapes.get(i).arrivee().equals(this.sesEtapes.get(i+1).depart()))
-					)
+					 (this.sesEtapes.get(i).arrivee().equals(this.sesEtapes.get(i+1).depart())))
 				{
 
 					i=i+1;
 				}
 				else
 				{
-					b = false;
+					return false;
 				}
 			} 
     		catch (ErreurTrajet e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				return false;
 			}
     	}
-    	return (b && this.sesEtapes.get(this.sesEtapes.size()-1).estPossible());
+    	return this.sesEtapes.get(this.sesEtapes.size()-1).estPossible();
     	}
 
     //TODO
     public Heure hArrivee() throws ErreurTrajet 
     {
-    	Heure arrivee = new Heure();
-    	// L'heure d'arrivée du trajet est l'heure d'arrivéé de la dernière étape
-    	arrivee = this.sesEtapes.get(this.sesEtapes.size()-1).hArrivee();
-    	return arrivee;
+    	// L'heure d'arrivée du trajet est l'heure d'arrivée de la dernière étape
+    	return this.sesEtapes.get(this.sesEtapes.size()-1).hArrivee();
     }
 
     //TODO
@@ -97,9 +96,9 @@ public class Trajet {
     	{
 			dureeTrajet = dateDepart.delaiAvant(this.hArrivee());
 		} 
-    	catch (ErreurHeure e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+    	catch (ErreurHeure e) 
+    	{
+			throw new ErreurTrajet("Problème avec les horaires");
 		}
     	return dureeTrajet;
     }
@@ -115,12 +114,12 @@ public class Trajet {
     		{
 				tempsAttente = tempsAttente.add(this.sesEtapes.get(i).attente());
 			} 
-    		catch (ErreurHeure e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+    		catch (ErreurHeure e) 
+    		{
+    			throw new ErreurTrajet("Problème avec les horaires");
 			}
     	}
-    	return null;
+    	return tempsAttente;
     }
     
     //TODO
