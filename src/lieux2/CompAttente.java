@@ -1,4 +1,4 @@
-package lieux;
+package lieux2;
 
 public class CompAttente implements Comparateur 
 {
@@ -8,8 +8,6 @@ public class CompAttente implements Comparateur
 	 */ 
 	public int compare(Trajet t1, Trajet t2) 
     {
-        //throw new UnsupportedOperationException(); // à changer !
-
         Heure attente1, attente2;
         try
         {
@@ -25,8 +23,8 @@ public class CompAttente implements Comparateur
         }
         catch (ErreurTrajet e)
         {
-        	return -1;
-        }    
+            return -1;
+        } 
         return attente1.compareTo(attente2);
     }
 }

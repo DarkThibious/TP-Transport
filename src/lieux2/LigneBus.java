@@ -1,4 +1,4 @@
-package lieux;
+package lieux2;
 import java.util.ArrayList;
 
 public class LigneBus 
@@ -8,9 +8,16 @@ public class LigneBus
 	protected Heure[] sesDeparts;
 	protected Heure[] sesTemps;
 
-	public LigneBus(String nom) 
+	private LigneBus(String nom)
 	{
 		nomLigne = nom;
+	}
+	
+	public static LigneBus getInstance(String nom)
+	{
+		LigneBus l = new LigneBus(nom);
+		new EnBus(l);
+		return l;
 	}
 
 	public void addArrets(Arret[] lesArrets)

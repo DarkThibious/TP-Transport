@@ -1,4 +1,4 @@
-package lieux;
+package lieux2;
 
 public class CompTemps implements Comparateur 
 {

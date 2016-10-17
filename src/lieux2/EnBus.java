@@ -1,12 +1,29 @@
-package lieux;
+package lieux2;
+
+import java.util.ArrayList;
 
 public class EnBus extends MoyenTransport 
 {
     private LigneBus saLigne;
-
-    public EnBus(LigneBus l) 
-    { 
+    private static ArrayList<EnBus> lesLignes = new ArrayList<EnBus>();
+    
+    
+    protected EnBus(LigneBus l) 
+    {
     	saLigne = l;
+    	EnBus.lesLignes.add(this);
+    }
+    
+    public static EnBus getInstance(LigneBus l)
+    {
+    	for(EnBus eb : EnBus.lesLignes)
+    	{
+    		if(eb.saLigne.equals(l))
+    		{
+    			return eb;
+    		}
+    	}
+    	return null;
     }
 
     public String toString() 
@@ -35,7 +52,7 @@ public class EnBus extends MoyenTransport
     {
     	if(!this.estPossible(l1, l2, dep)) // lance une erreur si le tajet n'est possible en bus entre "l1" et "l2"  à l'heure "dep"
     	{
-    		throw new ErreurTrajet("Arrêt non desservi");
+    		throw new ErreurTrajet("non desservi");
     	}
     	else // sinon renvoie la duree
     	{
@@ -54,34 +71,5 @@ public class EnBus extends MoyenTransport
     	Arret a1 = (Arret)l1;
     	Arret a2 = (Arret)l2;
 		return this.saLigne.estPossible(a1, a2, dep);
-    }
-    
-    public boolean equals(Object arg) 
-    {
-		if (arg == null) { return false; }
-		if (arg == this) { return true; }
-		if (arg instanceof EnBus) 
-		{
-			EnBus eb = (EnBus) arg;
-		    return eb.saLigne.equals(this.saLigne);
-		} 
-		else 
-		{ 
-			return false; 
-		}
-    }
-    
-    public int hashCode()
-    {
-    	int i;
-    	if(this.saLigne == null)
-    	{
-    		i = 0;
-    	}
-    	else
-    	{
-    		i = this.saLigne.hashCode();
-    	}
-    	return 72*i;
     }
 }

@@ -1,8 +1,10 @@
-package lieux;
+package lieux2;
 import java.util.Collection;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
+
+//import javax.swing.text.html.HTMLDocument.Iterator;
 
 public class Trajet {
     private String nom;
@@ -50,21 +52,22 @@ public class Trajet {
     	{
     		return false;
     	}
+    	int i=0;
     	//on vérifie que la première étape part du lieu de départ et que la dernière arrive au lieu d'arrivée
     	if(!(this.sesEtapes.get(0).depart().equals(this.depart) && this.sesEtapes.get(this.sesEtapes.size()-1).arrivee().equals(this.arrivee)))
     	{
     		return false;
     	}
-    	int i=0;
     	while(i<this.sesEtapes.size()-1)
     	{
     		try
     		{
     			/* le trajet est coherent
     			 * si toutes les etapes sont possibles
-    			 * ET l'heure d'arrivée de l'etape i < heure de depart de l'etape i+1 
-    			 * ET l'arrivéé de l'etape i = depart de l'etape i+1
+    			 * ET l'heure d'arrivée de l'etape i <= heure de depart de l'etape i+1 
+    			 * ET l'arrivéé de l'etape i == depart de l'etape i+1
     			 * */
+    			 
 				if ( this.sesEtapes.get(i).estPossible() && 
 					 (this.sesEtapes.get(i).hArrivee().compareTo(this.sesEtapes.get(i+1).hDepart()) <= 0) &&
 					 (this.sesEtapes.get(i).arrivee().equals(this.sesEtapes.get(i+1).depart())))

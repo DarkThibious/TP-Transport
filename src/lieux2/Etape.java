@@ -1,4 +1,4 @@
-package lieux;
+package lieux2;
 
 public class Etape 
 {
@@ -27,14 +27,13 @@ public class Etape
     	{
     		att = attente();
     		arri = hArrivee();
-    		/* manque encore l'horaire de depart + le delai d'attente */
-        	System.out.println("De " + dep.nom() + " a " + arr.nom() + ": "
-        				+ moyen.toString() + " [depart: " + hdep + "]" + " [attente: " + att + "]" + " [arrivée: " + arri + "]");
-        
+    		System.out.println("De " + dep.nom() + " a " + arr.nom() + ": "
+    				+ moyen.toString() + " [depart: " + hdep + "]" + " [attente: " + att + "]" + " [arrivée: " + arri + "]");
+    
     	}
     	catch (Exception e)
     	{
-    		System.out.println("Erreur d'affichage de l'étape");
+    		System.out.println("Erreur lors de l'affichage de cette étape");
     	}
     }
 

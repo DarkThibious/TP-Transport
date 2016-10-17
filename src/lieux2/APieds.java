@@ -1,11 +1,22 @@
-package lieux;
+package lieux2;
 
 public class APieds extends MoyenTransport 
 {
-
+	public static APieds instance = null;
+	
     // Pas vraiment utile. On pourrait en faire un singleton.
-    public APieds() {}
-
+    private APieds() 
+    {}
+    
+    public static APieds getInstance()
+    {
+    	if (APieds.instance == null)
+    	{
+    		APieds.instance = new APieds();	
+    	}
+    	return APieds.instance;
+    }
+    
     public String toString() 
     { 
     	return "A Pieds"; 
@@ -29,24 +40,5 @@ public class APieds extends MoyenTransport
     public Heure duree(Lieu l1, Lieu l2, Heure dep) throws ErreurTrajet 
     {
     	return l1.distance(l2);
-    }
-    
-    public boolean equals(Object arg)
-    {
-    	if (arg == null) { return false; }
-		if (arg == this) { return true; }
-		if (arg instanceof APieds) 
-		{
-		    return true;
-		} 
-		else 
-		{ 
-			return false; 
-		}	
-    }
-    
-    public int hashCode()
-    {
-    	return 12;
     }
 }
